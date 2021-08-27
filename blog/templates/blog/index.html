@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block content %}
+    <h2><strong>Num of Blogs:</strong> {{ blogs.count }}</h2>
+    <h2><strong>Num of Authors:</strong> {{ authors.count }}</h2>
+{% endblock %}
