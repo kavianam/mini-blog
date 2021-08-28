@@ -6,7 +6,12 @@
 
 {% block content %}
     {% for blog in blog_list %}
-        <h3><strong>Title: </strong>{{ blog.title }}</h3>
+        <h3>
+            <strong>Title: </strong>
+            <a href="{% url 'blog-detail' blog.id %}">
+                {{ blog.title }}
+            </a>
+        </h3>
         <p><strong>Author: </strong>{{ blog.author }}</p>
         <p><strong>Post Date: </strong>{{ blog.post_date }}</p>
         <p><strong>Description: </strong>{{ blog.get_short_description }}</p>
