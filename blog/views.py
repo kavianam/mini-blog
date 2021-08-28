@@ -23,6 +23,7 @@ class BlogListView(generic.ListView):
 
 
 class BlogDetailView(generic.DetailView):
+    # TODO: Justify the description
     model = Blog
     template_name = 'blog/blog_detail.html'
 
