@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Blog List
+{% endblock %}
+
+{% block content %}
+    {% for blog in blog_list %}
+        <h3><strong>Title: </strong>{{ blog.title }}</h3>
+        <p><strong>Author: </strong>{{ blog.author }}</p>
+        <p><strong>Post Date: </strong>{{ blog.post_date }}</p>
+        <p><strong>Description: </strong>{{ blog.get_short_description }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}
