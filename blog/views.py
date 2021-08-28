@@ -20,3 +20,8 @@ class BlogListView(generic.ListView):
     ordering = ['-post_date']
     template_name = 'blog/blog_list.html'
     paginate_by = 5
+
+
+class BlogDetailView(generic.DetailView):
+    model = Blog
+    template_name = 'blog/blog_detail.html'
