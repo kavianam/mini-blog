@@ -48,7 +48,7 @@ class Comment(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
     description = models.TextField()
     publish_time = models.DateTimeField(auto_now_add=True)
-    blog = models.ForeignKey(Blog, related_name='comments', on_delete=models.SET_NULL, null=True)
+    blog = models.ForeignKey(Blog, related_name='comments', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['publish_time']
