@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View, generic
+from django.urls import reverse
 
-from .models import Blog, Author
+from .models import Blog, Author, Comment
+from .forms import CommentForm
 
 
 def index(request):
@@ -36,3 +38,43 @@ class AuthorListView(generic.ListView):
 class AuthorDetailView(generic.DetailView):
     model = Author
     template_name = 'blog/author_detail.html'
+
+
+class CommentCreateView(generic.CreateView):
+    model = Comment
+    form_class = CommentForm
+
+    def get_form_kwargs(self):
+        """
+        I override this method to pass the request and pk of the blog object to the form
+        If we were using FBV we could easily do this:
+        form = MyForm(request.POST, request=request, pk=pk)
+        """
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'request': self.request})
+        kwargs.update(self.kwargs)
+        return kwargs
+
+    # def form_valid(self, form):
+    #     # form.instance.author = self.request.user
+    #     return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('blog-detail', kwargs={'pk': self.kwargs['pk']})
+
+
+class Test(View):
+    def get(self, request, pk):
+        print(request)
+        print(request.path)
+        print(request.path.split('/'))
+        return HttpResponse("Hello")
+
+class Test2(View):
+    def get(self, request, pk):
+        print(request)
+        print(request.path)
+        print(request.path.split('/'))
+        print(pk)
+        print()
+        return HttpResponse("Hello")
