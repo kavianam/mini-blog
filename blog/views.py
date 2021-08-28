@@ -27,6 +27,11 @@ class BlogDetailView(generic.DetailView):
     template_name = 'blog/blog_detail.html'
 
 
+class AuthorListView(generic.ListView):
+    model = Author
+    template_name = 'blog/author_list.html'
+
+
 class AuthorDetailView(generic.DetailView):
     model = Author
     template_name = 'blog/author_detail.html'
