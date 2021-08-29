@@ -80,7 +80,8 @@
 {#                         <hr>#}
 {#    <div class="dropdown">#}
                          <div class="dropdown fixed-bottom  mb-4 ms-4">
-                             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+{#                             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">#}
+                             <a href="#" class="d-inline-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
 {#                                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">#}
                                  <strong>mdo</strong>
                              </a>
@@ -98,12 +99,13 @@
         {% endblock side %}
 
         <div class="col-7 p-3">
+
             {% block content %}
             {% endblock %}
 
             {% block pagination %}
                 {% if is_paginated %}
-                    <nav aria-label="Page navigation example">
+                    <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center">
                             {% if page_obj.has_previous %}
                                 <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
