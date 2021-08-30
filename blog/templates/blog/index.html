@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <h2><strong>Num of Blogs:</strong> {{ blogs.count }}</h2>
-    <h2><strong>Num of Authors:</strong> {{ authors.count }}</h2>
+    <h1>Mini Blog Home</h1>
+    <p>Welcome to Mini Blog, a website developed by <em>kavianam</em>!</p>
+    <p>The Blog has the following record counts:</p>
+    <ul>
+        <li><strong>Num of Blogs:</strong> {{ blogs.count }}</li>
+        <li><strong>Num of Authors:</strong> {{ authors.count }}</li>
+    </ul>
+    <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
 {% endblock %}

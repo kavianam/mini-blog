@@ -9,9 +9,12 @@ from .forms import CommentForm
 def index(request):
     blogs = Blog.objects.all()
     authors = Author.objects.all()
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
     context = {
         'blogs': blogs,
-        'authors': authors
+        'authors': authors,
+        'num_visits': num_visits
     }
     return render(request, 'blog/index.html', context)
     # return render(request, 'blog/test6.html')
@@ -62,19 +65,3 @@ class CommentCreateView(generic.CreateView):
     def get_success_url(self):
         return reverse('blog-detail', kwargs={'pk': self.kwargs['pk']})
 
-
-class Test(View):
-    def get(self, request, pk):
-        print(request)
-        print(request.path)
-        print(request.path.split('/'))
-        return HttpResponse("Hello")
-
-class Test2(View):
-    def get(self, request, pk):
-        print(request)
-        print(request.path)
-        print(request.path.split('/'))
-        print(pk)
-        print()
-        return HttpResponse("Hello")
