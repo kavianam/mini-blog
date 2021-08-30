@@ -15,7 +15,7 @@
             <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>
         </p>
         <p><strong>Post Date: </strong>{{ blog.post_date }}</p>
-        <p><strong>Description: </strong>{{ blog.get_short_description }}</p>
+        <p><strong>Content: </strong>{{ blog.get_short_description }}</p>
         <hr>
     {% endfor %}
 {% endblock %}

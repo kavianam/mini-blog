@@ -26,16 +26,16 @@ class Blog(models.Model):
     title = models.CharField(max_length=50)
     author = models.ForeignKey(Author, related_name='blogs', on_delete=models.SET_NULL, null=True)
     post_date = models.DateField(auto_now_add=True)
-    description = models.TextField()
+    content = models.TextField()
     # comment = models.OneToOneField(Comment, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         ordering = ['title']
 
     def get_short_description(self):
-        if len(self.description) < 100:
-            return self.description
-        return self.description[:100] + "..."
+        if len(self.content) < 100:
+            return self.content
+        return self.content[:100] + "..."
 
     def get_absolute_url(self):
         return reverse('blog-detail', args=[str(self.id)])
