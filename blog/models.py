@@ -12,6 +12,9 @@ class Author(models.Model):
     class Meta:
         ordering = ['last_name', 'first_name']
 
+    def get_blogs_by_date_order(self):
+        return self.blogs.order_by('-post_date')
+
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
 
