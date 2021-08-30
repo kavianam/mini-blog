@@ -7,6 +7,10 @@
 {% block content %}
     <p><strong>First Name: </strong>{{ author.first_name }}</p>
     <p><strong>Last Name: </strong>{{ author.last_name }}</p>
-    <p><strong>Date of Birth: </strong>{{ author.date_of_birth }}</p>
-    <p><strong>Date of Death: </strong>{{ author.date_of_death }}</p>
+    {% if author.date_of_birth %}
+        <p><strong>Date of Birth: </strong>{{ author.date_of_birth }}</p>
+    {% endif %}
+    {% if author.date_of_death %}
+        <p><strong>Date of Death: </strong>{{ author.date_of_death }}</p>
+    {% endif %}
 {% endblock %}
