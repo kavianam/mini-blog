@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block content %}
+    <h3>
+        Comment for the
+        <a href="{% url 'blog-detail' view.kwargs.pk %}">blog</a>
+    </h3>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
