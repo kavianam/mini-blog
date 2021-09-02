@@ -29,6 +29,7 @@ class BlogListView(generic.ListView):
 
 class BlogDetailView(generic.DetailView):
     # TODO: Justify the description
+    # TODO: put comment form, instead of its link
     model = Blog
     template_name = 'blog/blog_detail.html'
 
