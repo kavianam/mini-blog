@@ -18,7 +18,9 @@
     <h2>Blogs</h2>
     <ul>
         {% for blog in author.get_blogs_by_date_order %}
-            <li><a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a></li>
+            <li>
+                <a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a> | date: {{ blog.post_date }}
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
