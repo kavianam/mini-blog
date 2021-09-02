@@ -24,9 +24,18 @@
                          </a>
 {#    <ul class="nav nav-pills flex-column mb-auto">#}
                          <ul class="list-unstyled ps-0">
+
                              <li class="mb-1 btn-toggle-nav">
-                                 <a href="{% url "blog-list" %}" class="link-dark fw-normal text-decoration-none">All Blogs</a>
+                                 <a href="{% url "blog-list" %}" class="link-dark fw-normal text-decoration-none">
+                                     All Blogs
+                                 </a>
                              </li>
+                             <li class="mb-1 btn-toggle-nav">
+                                 <a href="{% url "author-List" %}" class="link-dark fw-normal text-decoration-none">
+                                     All Authors
+                                 </a>
+                             </li>
+
                              <li class="mb-1">
                                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                      Home
