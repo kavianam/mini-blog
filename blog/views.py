@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, HttpResponse
 from django.views import View, generic
 from django.urls import reverse
@@ -44,7 +45,7 @@ class AuthorDetailView(generic.DetailView):
     template_name = 'blog/author_detail.html'
 
 
-class CommentCreateView(generic.CreateView):
+class CommentCreateView(LoginRequiredMixin, generic.CreateView):
     model = Comment
     form_class = CommentForm
 
@@ -53,6 +54,7 @@ class CommentCreateView(generic.CreateView):
         I override this method to pass the request and pk of the blog object to the form
         If we were using FBV we could easily do this:
         form = MyForm(request.POST, request=request, pk=pk)
+        we put self.kwargs because the pk of the blog is in it
         """
         kwargs = super().get_form_kwargs()
         kwargs.update({'request': self.request})
