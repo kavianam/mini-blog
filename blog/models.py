@@ -36,6 +36,7 @@ class Blog(models.Model):
         if len(self.content) < 100:
             return self.content
         return self.content[:100] + "..."
+    get_short_description.short_description = 'content'
 
     def get_absolute_url(self):
         return reverse('blog-detail', args=[str(self.id)])
