@@ -29,10 +29,7 @@ class BlogListView(generic.ListView):
 
 
 class BlogDetailView(View):
-    """
-    didn't use the DetailView because I wanted to show the comment form too
-    """
-    # TODO: Justify the description
+    """didn't use the DetailView because I wanted to show the comment form too"""
     def get(self, request, pk, *args, **kwargs):
         blog = get_object_or_404(Blog, id=pk)
         form = CommentForm()
