@@ -28,11 +28,23 @@ class BlogListView(generic.ListView):
     paginate_by = 5
 
 
-class BlogDetailView(generic.DetailView):
+class BlogDetailView(View):
+    """
+    didn't use the DetailView because I wanted to show the comment form too
+    """
     # TODO: Justify the description
-    # TODO: put comment form, instead of its link
-    model = Blog
-    template_name = 'blog/blog_detail.html'
+    def get(self, request, pk, *args, **kwargs):
+        blog = get_object_or_404(Blog, id=pk)
+        form = CommentForm()
+        context = {
+            'blog': blog,
+            'form': form
+        }
+        return render(request, 'blog/blog_detail.html', context)
+
+# class BlogDetailView(generic.DetailView):
+#     model = Blog
+#     template_name = 'blog/blog_detail.html'
 
 
 class AuthorListView(generic.ListView):
