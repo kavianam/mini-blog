@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.views import View, generic
 from django.urls import reverse
 
@@ -60,6 +60,12 @@ class CommentCreateView(LoginRequiredMixin, generic.CreateView):
         kwargs.update({'request': self.request})
         kwargs.update(self.kwargs)
         return kwargs
+
+    def get_context_data(self, **kwargs):
+        """add blog object into the form context, so in the template we can access the blog object"""
+        context = super().get_context_data(**kwargs)
+        context['blog'] = get_object_or_404(Blog, pk=self.kwargs['pk'])
+        return context
 
     # def form_valid(self, form):
     #     # form.instance.author = self.request.user

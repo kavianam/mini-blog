@@ -5,9 +5,19 @@
 {% endblock %}
 
 {% block content %}
+    <! ––
+    in django templates we have access to the:
+    1. request
+    2. user
+    3. perms
+    4. messages
+    5. form
+    6. view
+    -->
     <h3>
-        Comment for the
-        <a href="{% url 'blog-detail' view.kwargs.pk %}">blog</a>
+        Comment for the:
+{#        <a href="{% url 'blog-detail' view.kwargs.pk %}">{{ blog.title }}</a>#}
+        <a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a>
     </h3>
     <form method="post">
         {% csrf_token %}
