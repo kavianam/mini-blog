@@ -23,7 +23,8 @@
     {% endfor %}
 
     {% if user.is_authenticated %}
-        <form action="{% url 'comment-create' blog.id %}" method="post">
+{#        <form action="{% url 'comment-create' blog.id %}" method="post">#}
+        <form action="" method="post">
             {% csrf_token %}
             <div class="mb-3">
                 <label class="form-label" for="id_description">{{ form.description.label }}</label>
