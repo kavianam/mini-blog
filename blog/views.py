@@ -39,6 +39,18 @@ class BlogDetailView(View):
         }
         return render(request, 'blog/blog_detail.html', context)
 
+    def post(self, request, pk, *args, **kwargs):
+        blog = get_object_or_404(Blog, id=pk)
+        form = CommentForm(request.POST, request=request, pk=pk)
+        if form.is_valid():
+            form.save()
+        context = {
+            'blog': blog,
+            'form': form,
+            'errors': form.errors,
+        }
+        return render(request, 'blog/blog_detail.html', context)
+
 # class BlogDetailView(generic.DetailView):
 #     model = Blog
 #     template_name = 'blog/blog_detail.html'
