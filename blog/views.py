@@ -94,3 +94,7 @@ class CommentCreateView(LoginRequiredMixin, generic.CreateView):
     def get_success_url(self):
         return reverse('blog-detail', kwargs={'pk': self.kwargs['pk']})
 
+
+class BlogCreate(generic.CreateView):
+    model = Blog
+    fields = '__all__'
