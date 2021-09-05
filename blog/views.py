@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views import View, generic
 from django.urls import reverse
 
@@ -17,8 +17,7 @@ def index(request):
         'authors': authors,
         'num_visits': num_visits
     }
-    return render(request, 'blog/index.html', context)
-    # return render(request, 'blog/test6.html')
+    return render(request, 'index.html', context)
 
 
 class BlogListView(generic.ListView):
