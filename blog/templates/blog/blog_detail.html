@@ -16,17 +16,19 @@
     <hr>
 
     <h3 class="mb-3">Comments</h3>
-    {% for comment in blog.comments.all %}
-        <p><strong>user: {{ comment.author }} | time: {{ comment.publish_time }}</strong></p>
-        <p style="white-space: pre-line">{{ comment.description }}</p>
-        <hr>
-    {% endfor %}
+        <div class="text-start">
+            {% for comment in blog.comments.all %}
+                <p><strong>user: {{ comment.author }} | time: {{ comment.publish_time }}</strong></p>
+                <p style="white-space: pre-line">{{ comment.description }}</p>
+                <hr>
+        {% endfor %}
+    </div>
 
     {% if user.is_authenticated %}
 {#        <form action="{% url 'comment-create' blog.id %}" method="post">#}
         <form action="" method="post">
             {% csrf_token %}
-            <div class="mb-3">
+            <div class="mb-3 text-start">
                 <label class="form-label" for="id_description">{{ form.description.label }}</label>
                 <input type="text" class="form-control" name="description" id="id_description" required>
                 <div class="form-text">{{ form.description.help_text }}</div>
