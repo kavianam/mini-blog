@@ -5,19 +5,18 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row row-cols-1 row-cols-lg-3 g-4">
     {% for blog in blog_list %}
-        <h3>
-            <strong>Title: </strong>
-{#            <a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a>#}
-            <a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
-        </h3>
-        <p>
-            <strong>Author: </strong>
-{#            <a href="{% url 'author-detail' blog.author.id %}">{{ blog.author }}</a>#}
-            <a href="{{ blog.author.get_absolute_url }}">{{ blog.author }}</a>
-        </p>
-        <p><strong>Post Date: </strong>{{ blog.post_date }}</p>
-        <p><strong>Content: </strong>{{ blog.get_short_description }}</p>
-        <hr>
+        <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                  <h5 class="card-title"><a href="{{ blog.get_absolute_url }}"> {{ blog.title }}</a></h5>
+                  <p class="card-text p-lg-2">{{ blog.get_short_description }}</p>
+{#            <a href="{{ blog.get_absolute_url }}" class="card-link">Blog link</a>#}
+{#            <a href="{{ blog.author.get_absolute_url }}" class="card-link">Another link</a>#}
+              </div>
+            </div>
+        </div>
     {% endfor %}
+    </div>
 {% endblock %}
