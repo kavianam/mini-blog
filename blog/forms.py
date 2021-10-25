@@ -19,6 +19,6 @@ class CommentForm(forms.ModelForm):
         comment: Comment = super().save(commit=False)
         comment.author = self.request.user
         comment.blog = get_object_or_404(Blog, pk=self.pk)
-        if comment:
+        if commit:
             comment.save()
         return comment
